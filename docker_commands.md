@@ -24,7 +24,9 @@
 17. **docker export --output="latest.tar" <container ID / container name>** : to save a tar file of the given active/inactive container locally.
 18. **docker import <absolute-path-of-tar-file>** : to create a local image out of a tar file.
 
-19. **docker swarm** : **Cluster of docker engine in different virtual/physical machine**.
+19. **docker tag <YOUR_DOCKER_USERNAME>/docker-quickstart <YOUR_DOCKER_USERNAME>/docker-quickstart:1.0** : Docker tags allow you to label and version your images while pushing to repository
+
+20. **docker swarm** : **Cluster of docker engine in different virtual/physical machine**.
     Docker Swarm is a native **clustering and orchestration tool** for Docker containers. It allows you to manage a group of **Docker hosts** (machines running Docker) as a single, virtual host. By using Docker Swarm, you can automate the deployment, scaling, and management of containerized applications across multiple nodes.
     
   * **docker swarm init --advertise-addr <Master Private IP || ip-address>** : to initiate swarm as a manager
