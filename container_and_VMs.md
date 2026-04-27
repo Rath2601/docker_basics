@@ -3,6 +3,7 @@
 ---
 
 ## Why Containers?
+- Isolated and Self-contained
 - No need to download/install → just run
 - Easy version switching
 - Easy to port across machines
