@@ -6,7 +6,7 @@
 
 ## Why It Exists
 - **Underutilization** → pool resources across workloads
-- **Manual config errors** → template (pre-configured OS + software) + clone infrastructure consistently
+- **Manual config errors** → template (pre-configured OS disk image + software config) + clone infrastructure consistently
 - **Slow DR** → snapshot VMs, restore in minutes (not hours)
 - **Cost** → fewer physical servers, less power/cooling
 
@@ -60,10 +60,16 @@ Hypervisor
 
 ## Core Concepts
 
-- **Abstraction** → hiding physical hardware behind virtual interfaces
+- **Abstraction** → hiding physical hardware behind virtual interfaces (CPU → vCPU | RAM → vRAM | Disk → virtual disk)
 - **Partitioning** → dividing resources among VMs
-- **Isolation** → ensuring VMs don’t interfere
-- **Encapsulation** → packaging VM as portable files
+- **Isolation** → ensuring VMs don’t interfere (Security boundary - this is huge in multi-tenant clouds)
+- **Encapsulation** → packaging VM as portable files (pre-configured OS disk image + software config | easy to port)
+
+### Vendor features
+- **Live Migration** → Move a running VM without downtime (Needs shared storage or replication)
+- **Snapshotting**  → Freeze VM state and roll back later
+- **High Availability (HA)** → If host dies → VM restarts elsewhere.
+- **Distributed Resource Scheduling (DRS)** → Auto-balances VMs across hosts.
 
 ---
 
