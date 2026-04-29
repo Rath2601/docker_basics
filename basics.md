@@ -73,7 +73,7 @@ Hypervisor
 | Scenario | Use |
 |---|---|
 | Cloud prod workload | Type 1 VM (EC2, Azure VM) |
-| Microservices / cloud-native | Docker + Kubernetes |
+| Microservices / cloud-native (software systems that fully takes advantage of cloud computing environments)| Docker + Kubernetes |
 | Multi-OS testing locally | Type 2 VM (VirtualBox, VMware Workstation) |
 | Linux dev tools on Windows | WSL 2 |
 | Remote desktops at scale | VDI (Citrix, Horizon, WorkSpaces) |
