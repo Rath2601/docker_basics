@@ -58,13 +58,12 @@ Hypervisor
 
 ---
 
-## Core Concepts (3-word definitions)
+## Core Concepts
 
-- **Partitioning** → split one resource across many VMs
-- **Isolation** → VMs/containers can't touch each other
-- **Encapsulation** → entire VM packed into portable file (`.vmdk`, `.ova`, container image)
-- **Live Migration** → move running VM between hosts, zero downtime (VMware vMotion)
-- **Snapshotting** → capture VM state → instant rollback for DR/patch testing
+- **Abstraction** → hiding physical hardware behind virtual interfaces
+- **Partitioning** → dividing resources among VMs
+- **Isolation** → ensuring VMs don’t interfere
+- **Encapsulation** → packaging VM as portable files
 
 ---
 
