@@ -1,4 +1,4 @@
-# Virtualization — Compact Reference
+# Virtualization
 > **Core idea:** Software layer abstracts physical hardware → run multiple isolated VMs on one machine
 ---
 ## Core Concepts
@@ -29,6 +29,21 @@
 | **Application** | Packages app + deps, streams without local install | Microsoft App-V, Citrix Virtual Apps |
 | **Data** | Unified query layer over siloed data sources | Denodo, AWS Glue, Databricks federation |
 ---
+
+## OS Architecture
+```
+Applications
+    ↓
+OS (user space: shell, libs, tools)
+    ↓
+Kernel  ← CPU scheduling, memory mgmt, hardware control
+    ↓
+Hardware
+```
+> **OS** = Kernel + user-space tools (shell, GUI)
+> **All Linux distros share the same kernel**
+---
+
 ## Hypervisors (VMM)
 ```
 Hypervisor
@@ -58,6 +73,36 @@ Apps → OS → Hardware
 ```
 > Hyper-V turns **your own Windows** into the main (root) VM → VMs you create become **child VMs**
 ---
+
+## Why Containers?
+- Isolated and Self-contained
+- No need to download/install → just run
+- Easy version switching
+- Easy to port across machines
+
+---
+
+## WSL1 vs WSL2
+| Feature | WSL1 — The Translator | WSL2 — The Secret VM |
+|---|---|---|
+| **Kernel** | Shared Windows Kernel | Real Linux Kernel |
+| **Architecture** | Translation layer (Linux syscalls → Windows) | Hyper-V lightweight "Utility VM" |
+| **Performance** | Faster for Windows files | Much faster for Linux files |
+| **Compatibility** | Limited (missing some syscalls) | 100% (it's real Linux) |
+
+> **WSL2 sits directly on Hyper-V** → disable Hyper-V in Windows Features = WSL2 stops working
+---
+## WSL2 vs Hyper-V VM
+| Feature | WSL2 | Hyper-V VM |
+|---|---|---|
+| **Boot time** | Near instant | 30+ seconds |
+| **RAM** | Dynamic (grows/shrinks) | Static (reserved upfront) |
+| **Kernel** | Microsoft-tuned Linux kernel | Any Linux kernel you provide |
+| **Isolation** | Low (shares files/network) | High (fully boxed off) |
+| **Snapshots** | ✗ Not supported | ✓ Save state anytime |
+
+---
+
 ## VMs vs. Containers vs. WSL 2
 | | **Container (Docker)** | **VM — Type 1** | **VM — Type 2** | **WSL 2** |
 |---|---|---|---|---|
@@ -83,46 +128,6 @@ Apps → OS → Hardware
 | Cross-source analytics | Data virtualization (Denodo, Glue) |
 ---
 
-## Containers & Virtualization — Personal Notes
----
-## Why Containers?
-- Isolated and Self-contained
-- No need to download/install → just run
-- Easy version switching
-- Easy to port across machines
----
-## OS Architecture
-```
-Applications
-    ↓
-OS (user space: shell, libs, tools)
-    ↓
-Kernel  ← CPU scheduling, memory mgmt, hardware control
-    ↓
-Hardware
-```
-> **OS** = Kernel + user-space tools (shell, GUI)
-> **All Linux distros share the same kernel**
----
-## WSL1 vs WSL2
-| Feature | WSL1 — The Translator | WSL2 — The Secret VM |
-|---|---|---|
-| **Kernel** | Shared Windows Kernel | Real Linux Kernel |
-| **Architecture** | Translation layer (Linux syscalls → Windows) | Hyper-V lightweight "Utility VM" |
-| **Performance** | Faster for Windows files | Much faster for Linux files |
-| **Compatibility** | Limited (missing some syscalls) | 100% (it's real Linux) |
-
-> **WSL2 sits directly on Hyper-V** → disable Hyper-V in Windows Features = WSL2 stops working
----
-## WSL2 vs Hyper-V VM
-| Feature | WSL2 | Hyper-V VM |
-|---|---|---|
-| **Boot time** | Near instant | 30+ seconds |
-| **RAM** | Dynamic (grows/shrinks) | Static (reserved upfront) |
-| **Kernel** | Microsoft-tuned Linux kernel | Any Linux kernel you provide |
-| **Isolation** | Low (shares files/network) | High (fully boxed off) |
-| **Snapshots** | ✗ Not supported | ✓ Save state anytime |
----
 ## Creating VMs & Containers — Per OS
 ### Windows
 ```
