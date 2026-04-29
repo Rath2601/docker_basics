@@ -6,7 +6,7 @@
 
 ## Why It Exists
 - **Underutilization** → pool resources across workloads
-- **Manual config errors** → template + clone infrastructure consistently
+- **Manual config errors** → template (pre-configured OS + software) + clone infrastructure consistently
 - **Slow DR** → snapshot VMs, restore in minutes (not hours)
 - **Cost** → fewer physical servers, less power/cooling
 
