@@ -11,7 +11,7 @@
 - **Live Migration** → Move a running VM without downtime (Needs shared storage or replication)
 - **Snapshotting**  → Freeze VM state and roll back later
 - **High Availability (HA)** → If host dies → VM restarts elsewhere.
-- **Distributed Resource Scheduling (DRS)** → Auto-balances VMs across hosts. (3 physical servers - connected in a cluster)
+- **Distributed Resource Scheduling (DRS)** → Auto-balances VMs across hosts. (3 physical servers - connected in a cluster, ex :Microsoft 365)
 ---
 ## Why It Exists
 - **Underutilization** → pool resources across workloads
